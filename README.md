@@ -70,7 +70,6 @@ Turkish consonants [[can be divided by soft and hard ones]](https://en.wikibooks
 * Fri**gya** → Фри**гья**
 * mi**lyo**n → ми**льӧ**н
 * Te**myi**z → Те**мьї**з
-* **ğ**arp → **ғ**арп
 * Esto**nya** → Есто**нья**
 * Sibi**rya** → Сиби**рья**
 * So**vye**t → Со**вьє**т
