@@ -21,7 +21,7 @@ Almost every consonant can be found on a regular ЙЦУКЕН keyboard layout, w
 * **d**eve → **д**еве
 * **f**ikir → **ф**икир
 * **g**üç → **г**үч
-* **ğ**arp → **ғ**арп
+* elazı**ğ** → елазы**ғ**
 * **h**ayvan → **х**айван
 * **j**enerik → **ж**енерик
 * **k**edi → **к**еди
