@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Turkish Latin to Cyrillic conversion</title>
+    </head>
+    <body>
+    <h1>Turkish Latin to Cyrillic conversion</h1>
+    <h2>by <a href="https://github.com/bignavigator">bignavigator</a></h2>   
+    <div class="form-group">
+        <textarea id="input" class="form-control" rows="5">Bütün insanlar hür, haysiyet ve haklar bakımından eşit doğarlar. Akıl ve vicdana sahiptirler ve birbirlerine karşı kardeşlik zihniyeti ile hareket etmelidirler.</textarea>
+        <textarea id="output" class="form-control" rows="5">Бүтүн инсанлар хүр, хайсиєт ве хаклар бакымындан ешит доғарлар. Акыл ве виӂдана сахиптирлер ве бирбирлерине каршы кардешлик зихниєти иле харекет етмелидирлер.</textarea>
+    </div>
+    <div class="form-group" style="text-align: center;">
+        <button type="button" id="submit" class="btn btn-primary">Transliterate</button>
+    </div>
+    <link rel="stylesheet" href="https://snipp.ru/cdn/bootstrap/4.3/bootstrap.min.css">
+
+    <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+    function translit(word){
+        var answer = '';
+        var converter = {
+            'a': 'а', 'e': 'е', 'i': 'и', 'ı': 'ы', 'o': 'о', 'ö': 'ө', 'u': 'у', 'ü': 'ү',
+            'b': 'б', 'v': 'в', 'g': 'г', 'ğ': 'ғ', 'd': 'д', 'j': 'ж', 'c': 'ӂ', 'z': 'з', 
+            'y': 'й', 'k': 'к', 'l': 'л', 'm': 'м', 'n': 'н', 'p': 'п', 'r': 'р', 's': 'с', 
+            't': 'т', 'f': 'ф', 'h': 'х', 'ç': 'ч', 'ş': 'ш', 'â': 'ӑ', 'î': 'и́', 'û': 'у́',
+
+            'A': 'А', 'E': 'Е', 'İ': 'И', 'I': 'Ы', 'O': 'О', 'Ö': 'Ө', 'U': 'У', 'Ü': 'Ү',
+            'B': 'Б', 'V': 'В', 'G': 'Г', 'Ğ': 'Ғ', 'D': 'Д', 'J': 'Ж', 'C': 'Ӂ', 'Z': 'З', 
+            'Y': 'Й', 'K': 'К', 'L': 'Л', 'M': 'М', 'N': 'Н', 'P': 'П', 'R': 'Р', 'S': 'С', 
+            'T': 'Т', 'F': 'Ф', 'H': 'Х', 'Ç': 'Ч', 'Ş': 'Ш', 'Â': 'Ӑ', 'Î': 'И́', 'Û': 'У́'
+        };
+
+        for (var i = 0; i < word.length; ++i ) {
+            if (converter[word[i]] == undefined){
+                answer += word[i];
+            } else {
+                answer += converter[word[i]];
+            }
+        }
+        var newanswer = answer.replace(/(йа)|(йе)|(йи)|(йы)|(йо)|(йө)|(йу)|(йү)|(Йа)|(Йе)|(Йи)|(Йы)|(Йо)|(Йө)|(Йу)|(Йү)|(бй)|(ӂй)|(дй)|(гй)|(ғй)|(жй)|(лй)|(мй)|(нй)|(рй)|(вй)|(зй)|(фй)|(хй)|(сй)|(шй)|(пй)|(чй)|(тй)|(кй)/g, 
+        function(str, p1, p2, p3, p4, p5, p6, p7, p8, b1, b2, b3, b4, b5, b6, b7, b8, 
+        c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, d1, d2, d3, d4, d5, d6, d7, d8) {
+            if(p1) return 'я'; if(b1) return 'Я';
+            if(p2) return 'є'; if(b2) return 'Є';
+            if(p3) return 'ї'; if(b3) return 'Ї';
+            if(p4) return 'ӹ'; if(b4) return 'Ӹ';
+            if(p5) return 'ӧ'; if(b5) return 'Ӧ';
+            if(p6) return 'ӫ'; if(b6) return 'Ӫ';
+            if(p7) return 'ю'; if(b7) return 'Ю';
+            if(p8) return 'ӳ'; if(b8) return 'Ӳ';
+
+            if(c1) return 'бь';  if(c11) return 'вь';            
+            if(c2) return 'ӂь';  if(c12) return 'зь';
+            if(c3) return 'дь';  if(d1) return 'фъ';
+            if(c4) return 'гь';  if(d2) return 'хъ';
+            if(c5) return 'ғь';  if(d3) return 'съ';
+            if(c6) return 'жь';  if(d4) return 'шъ';
+            if(c7) return 'ль';  if(d5) return 'пъ';
+            if(c8) return 'мь';  if(d6) return 'чъ';
+            if(c9) return 'нь';  if(d7) return 'тъ';
+            if(c10) return 'рь'; if(d8) return 'къ';           
+            
+        });
+        return newanswer.replace(/(ьа)|(ье)|(ьи)|(ьы)|(ьо)|(ьө)|(ьу)|(ьү)|(ъа)|(ъе)|(ъи)|(ъы)|(ъо)|(ъө)|(ъу)|(ъү)/g, 
+        function(str, s1, s2, s3, s4, s5, s6, s7, s8, h1, h2, h3, h4, h5, h6, h7, h8) {
+            if(s1) return 'ья'; if(h1) return 'ъя';
+            if(s2) return 'ьє'; if(h2) return 'ъє';
+            if(s3) return 'ьї'; if(h3) return 'ъє';
+            if(s4) return 'ьӹ'; if(h4) return 'ъӹ';
+            if(s5) return 'ьӧ'; if(h5) return 'ъӧ';
+            if(s6) return 'ьӫ'; if(h6) return 'ъӫ';
+            if(s7) return 'ью'; if(h7) return 'ъю';
+            if(s8) return 'ьӳ'; if(h8) return 'ъӳ';
+        });
+    }
+
+
+    $(document).ready(function () {
+        $('#input').on('change', function (e) {
+        $('#output').val($('#input').val());
+        });
+    });
+
+    $('#submit').click(function(){
+        $('#output').val(function(i, val){
+            return translit(val);
+        });
+        
+        return false;
+    });
+    </script>
+    </body>
+</html>
